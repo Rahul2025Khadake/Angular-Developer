@@ -1,0 +1,56 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "User": [
+    {
+      "name": "Dhiraj kkk",
+      "Email": "dhiraj00@gmal.comll",
+      "Phone": "887755443ll",
+      "Website": "www.com,,,",
+      "id": 2
+    },
+    {
+      "name": "Shivam",
+      "Email": "shivam33@gmail.com",
+      "Phone": "9988776655",
+      "Website": "ssss.www.com",
+      "id": 3
+    },
+    {
+      "name": "Vishal",
+      "Email": "vishal99@smartgig.tech",
+      "Phone": "11111111",
+      "Website": "www.vishal.com kk",
+      "id": 4
+    },
+    {
+      "name": "Dhiraj",
+      "Email": "vishal99@smartgig.tech",
+      "Phone": "11111111",
+      "Website": "www.com",
+      "id": 5
+    },
+    {
+      "name": null,
+      "Email": null,
+      "Phone": null,
+      "Website": null,
+      "id": 6
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
