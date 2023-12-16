@@ -4,6 +4,9 @@ import { FormGroup,ReactiveFormsModule,FormsModule,Validator, FormBuilder, FormC
 import { NgModule } from '@angular/core';
 import { DataServiceService } from '../data-service.service';
 import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewComponent } from '../view/view.component';
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -12,6 +15,7 @@ import Swal from 'sweetalert2';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
@@ -21,11 +25,11 @@ import Swal from 'sweetalert2';
 export class UserComponent implements OnInit {
 
   isedit:boolean=false;
-  // isHeadingaction:boolean=true;
+
   UserformDetails: FormGroup|any;
   data:any;
   constructor(private fb: FormBuilder, private data_service:DataServiceService,
-    ) {}
+    private dialog: MatDialog ) {}
  
     ngOnInit() {
       this.UserformDetails = new FormGroup({
@@ -110,6 +114,31 @@ Submit()
       });
      })
   }
+  viewMode: boolean = false;
+  ViweData() {
+    this.viewMode = true;
+    this.openModal();
+  }
+
+  openModal() {
+    const dialogRef = this.dialog.open(ViewComponent, {
+      width: '1000px',
+      height:'500px',
+      data: {
+        viewMode: this.viewMode,
+      },
+    });
+    // Set here data in session storage 
+    sessionStorage.setItem('ViewData','View')
+    // Handle the dialog close event if needed
+    dialogRef.afterClosed().subscribe(result => {
+      // Handle the result if needed
+      console.log('Dialog closed with result:', result);
+    });
+  }
+ 
+  
+  
 }
 
 

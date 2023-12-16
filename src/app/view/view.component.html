@@ -1,0 +1,27 @@
+
+<div class="container " *ngIf="GetViewData === 'View'">
+    <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+    <p class="fs-5 text-black text-center mt-4">View Data</p>
+    <div class="row">
+        
+      <div class="col-sm-12">
+        <table class="border table-borderless mt-4">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Website</th>
+            </tr>
+            <tr *ngFor="let user of data;let i=index ;">
+                <td>{{i+1}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.Email}}</td>
+                <td>{{user.Phone}}</td>
+                <td>{{user.Website}}</td>
+            </tr>
+        </table>
+      </div>
+    </div>
+
+</div>

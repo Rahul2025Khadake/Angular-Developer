@@ -1,0 +1,65 @@
+.from-box
+{
+    margin: 0px auto;
+    padding: 15px;
+    
+}
+h4
+{
+    text-align: center;
+}
+h4{
+    color: white;
+}
+
+h3{
+    color: white;
+}
+
+.modal-body
+{
+    margin: -18px;
+}
+.close-icon
+{
+    float: right;
+    margin-top: 16px;
+}
+table
+{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    height: 273px;
+    overflow-y: auto;
+}
+th,td
+{
+    padding: 8px;
+}
+th
+{ 
+    background-color: #5582e4;
+    color: white;
+}
+.tr:nth-child(even)
+{
+    background-color: #f2f2f2;
+}
+.model-header
+{
+    background-color: #5582e4;
+    color: white;
+}
+.close-btn1
+{
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 23px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+header
+{
+    padding: 18px;
+     background-color: #5582e4;
+}
