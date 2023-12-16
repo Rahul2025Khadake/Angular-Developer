@@ -12,6 +12,8 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Website</th>
+                <th>DOB</th>
+                <th>Developer</th>
             </tr>
             <tr *ngFor="let user of data;let i=index ;">
                 <td>{{i+1}}</td>
@@ -19,6 +21,8 @@
                 <td>{{user.Email}}</td>
                 <td>{{user.Phone}}</td>
                 <td>{{user.Website}}</td>
+                <td>{{user.dob}}</td>
+                <td>{{user.Developer}}</td>
             </tr>
         </table>
       </div>

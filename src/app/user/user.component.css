@@ -56,3 +56,13 @@ header
     padding: 18px;
      background-color: #5582e4;
 }
+.close-icon
+{
+    float: right;
+}
+.disabled-input {
+    /* opacity: 0.5; */
+    cursor:not-allowed; 
+
+    pointer-events: none;
+  }

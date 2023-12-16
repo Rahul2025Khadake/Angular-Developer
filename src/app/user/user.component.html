@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="ViewUserAllData">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
@@ -14,7 +14,7 @@
 <br>
 <br>
 
-<div class="container mt-4">
+<div class="container mt-4" *ngIf="ViewUserAllData">
     <div class="row">
       <div class="col-sm-12">
         <table class="border table-borderless mt-4">
@@ -24,6 +24,8 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Website</th>
+                <th>DOB</th>
+                <th>Developer</th>
                 <th>Action</th>
             </tr>
             <tr *ngFor="let user of data;let i=index ;">
@@ -32,11 +34,14 @@
                 <td>{{user.Email}}</td>
                 <td>{{user.Phone}}</td>
                 <td>{{user.Website}}</td>
+                <td>{{user.dob}}</td>
+                <td>{{user.Developer}}</td>
                 <td>
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="EdtiUser(i,user)"><i class="fa-regular fa-pen-to-square"></i></button>
                     <button class="btn btn-danger ms-3" (click)="DeleteUser(i,user)"><i class="fa-solid fa-trash"></i></button>
 
                     <button type="button" class="btn btn-info ms-3" (click)="ViweData()"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-success ms-3" (click)="ViweDataBasedOnDivTag()"><i class="fa-regular fa-eye"></i></button>
                 </td>
             </tr>
         </table>
@@ -45,6 +50,37 @@
 
 </div>
 
+<!-- Based on conditiond opening the div only view data -->
+
+<div class="container mt-4" *ngIf="!ViewUserAllData" style=" border: 4px solid aliceblue">
+  <mat-icon mat-button class="close-icon" [mat-dialog-close]="true" (click)="CloseTableviewdata()">close</mat-icon>
+  <p class="fs-5 text-black text-center">View Data</p>
+  <div class="row" style="margin-top: -8px;">
+    <div class="col-sm-12">
+      <table class="border table-borderless mt-4">
+          <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Website</th>
+              <th>DOB</th>
+              <th>Developer</th>
+          </tr>
+          <tr *ngFor="let user of data;let i=index ;">
+              <td>{{i+1}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.Email}}</td>
+              <td>{{user.Phone}}</td>
+              <td>{{user.Website}}</td>
+              <td>{{user.dob}}</td>
+              <td>{{user.Developer}}</td>
+          </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
 
   
   <!-- Modal -->
@@ -84,6 +120,17 @@
                     <label for="exampleInputPassword1">Website</label>
                     <input type="text" class="form-control mt-3 mb-3" id="exampleInputPassword1" placeholder="Enter Your website"
                     formControlName="Website" name="Website">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Role</label>
+                    <input type="text" class="form-control mt-3 mb-3" placeholder="Enter Your role"
+                           formControlName="Developer" name="Developer" [disabled]="isDisabled">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">DOB</label>  
+                    <input type="date" class="form-control mt-3 mb-3" id="exampleInputPassword1" placeholder="Enter Your DOB"
+                    formControlName="dob" name="dob" >
                   </div>
                   
 

@@ -6,7 +6,12 @@ import { DataServiceService } from '../data-service.service';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewComponent } from '../view/view.component';
+import {MatIconModule} from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
+import {MatInputModule} from '@angular/material/input';
+
+import {MatNativeDateModule} from '@angular/material/core';
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -15,7 +20,10 @@ import { ViewComponent } from '../view/view.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    MatDialogModule,
+    MatIconModule,
+
+  
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
@@ -25,7 +33,7 @@ import { ViewComponent } from '../view/view.component';
 export class UserComponent implements OnInit {
 
   isedit:boolean=false;
-
+ 
   UserformDetails: FormGroup|any;
   data:any;
   constructor(private fb: FormBuilder, private data_service:DataServiceService,
@@ -36,12 +44,28 @@ export class UserComponent implements OnInit {
         "name": new FormControl('', Validators.required),
         "Email": new FormControl('', Validators.required),
         "Phone": new FormControl('', Validators.required),
-        "Website": new FormControl('', Validators.required)
+        "Website": new FormControl('', Validators.required),
+        "dob": new FormControl('', Validators.required),
+        "Developer": new FormControl( '',Validators.required),
       });
     
       this.Getapi_DAta();
     }
+    ViewUserAllData:boolean=true;
+    ViweDataBasedOnDivTag()
+    {
+      
+          this.ViewUserAllData = !this.ViewUserAllData;
+     
 
+    }
+    CloseTableviewdata()
+    {
+  
+      this.ViewUserAllData=true;
+    
+     
+    }
 Submit()
 {
 
@@ -59,6 +83,8 @@ Submit()
   {
      this.isedit=false;
      this.UserformDetails.reset();
+     this.isDisabled = false
+    
     
   }
   UpdateUser(user:any)
@@ -90,16 +116,26 @@ Submit()
       });
      })
   }
+  
+   isDisabled: boolean = true;
   EdtiUser(i:any,user:any)
-  {
+  {   
+    alert(this.isDisabled)
+    this.isDisabled=true;
+    
+   
      this.isedit=true;
      this.UserformDetails.id=user.id;
      this.UserformDetails.setValue({
       name:user.name,
       Email:user.Email,
       Phone:user.Phone,
-      Website:user.Website
+      Website:user.Website,
+      dob:user.dob,
+       Developer:user.Developer,
+  
      });
+   
   }
   DeleteUser(index:number,user:any)
   {
