@@ -14,7 +14,30 @@
 <br>
 <br>
 
-<div class="container mt-4" *ngIf="ViewUserAllData">
+<div class="container mt-2" *ngIf="ViewUserAllData">
+  <div class="row">
+   <div class="col-3">
+    <span>Search Using Filter Pipe</span>
+    <div class="form-outline" data-mdb-input-init>
+      <input type="search" id="form1" class="form-control"  autocomplete="off" placeholder="&#61442; Search Here Anything" aria-label="Search" 
+      [(ngModel)]="searchText"/>
+      
+    </div>
+  </div>
+    <div class="col-3">
+      <span>Search Using Based On API Response</span>
+      <div class="form-outline" data-mdb-input-init>
+        <input type="text"  [(ngModel)]="searchText" class="form-control" (keyup)="onSearchChange($event)" autocomplete="off" placeholder="&#61442; Search Here Anything" aria-label="Search"   />
+      </div>
+   </div>
+   <div class="col-1">
+    <div style="margin-top: 20px;">
+      <button class="btn btn-dark" id="cleardata"   (click)="Refreshdata()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+    </div>
+ </div>
+ 
+  
+  
     <div class="row">
       <div class="col-sm-12">
         <table class="border table-borderless mt-4">
@@ -28,7 +51,7 @@
                 <th>Developer</th>
                 <th>Action</th>
             </tr>
-            <tr *ngFor="let user of data;let i=index ;">
+            <tr *ngFor="let user of data | filter:searchText; let i=index">
                 <td>{{i+1}}</td>
                 <td>{{user.name}}</td>
                 <td>{{user.Email}}</td>

@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ViewComponent } from '../view/view.component';
 import {MatIconModule} from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { FilterPipe } from '../filter.pipe';
 import {MatInputModule} from '@angular/material/input';
 
 import {MatNativeDateModule} from '@angular/material/core';
@@ -22,6 +22,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     ReactiveFormsModule,
     MatDialogModule,
     MatIconModule,
+    FilterPipe
 
   
   ],
@@ -120,8 +121,7 @@ Submit()
    isDisabled: boolean = true;
   EdtiUser(i:any,user:any)
   {   
-    alert(this.isDisabled)
-    this.isDisabled=true;
+       this.isDisabled=true;
     
    
      this.isedit=true;
@@ -174,7 +174,24 @@ Submit()
   }
  
   
-  
+  // search filter
+  searchText: string = '';
+ 
+  onSearchChange($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      search: this.searchText,
+    };
+    this.Getapi_DAta();
+}
+
+Refreshdata()
+{
+  //  const cleardata = document.getElementById('cleardata') as HTMLInputElement;   if (cleardata) {     cleardata.value = this.searchText;   };
+  this.searchText="";
+  this.Getapi_DAta();
+}
 }
 
 
