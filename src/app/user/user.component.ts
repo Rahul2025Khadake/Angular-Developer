@@ -10,8 +10,10 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FilterPipe } from '../filter.pipe';
 import {MatInputModule} from '@angular/material/input';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatCardModule} from '@angular/material/card';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
  import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-user',
@@ -24,6 +26,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDialogModule,
     MatIconModule,
     FilterPipe,
+    MatCheckboxModule,
+    MatCardModule,
+    MatSlideToggleModule
 
   
   ],
@@ -33,7 +38,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 
 
 export class UserComponent implements OnInit {
-
+  checked = false;
   isedit:boolean=false;
  
   UserformDetails: FormGroup|any;
@@ -200,6 +205,10 @@ exportDataToExcel(): void {
 exportDataToPDF()
 {
   this.data_service.exportToPdf(this.data, 'table_data');
+}
+toggleDatapromotionm()
+{
+
 }
 }
 
