@@ -197,6 +197,9 @@ Refreshdata()
 exportDataToExcel(): void {
   this.data_service.exportToExcel(this.data, 'table_data');
 }
-
+exportDataToPDF()
+{
+  this.data_service.exportToPdf(this.data, 'table_data');
+}
 }
 

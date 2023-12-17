@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import jsPDF from 'jspdf';
 import * as XLSX from 'xlsx';
+import 'jspdf-autotable'; 
+// Import the jspdf-autotable plugin
 @Injectable({
   providedIn: 'root'
 })
@@ -56,5 +59,19 @@ export class DataServiceService  {
     d.length == 1 && (d = '0' + d);
     m.length == 1 && (m = '0' + m);
     return d + m + y;
+  }
+
+  // Downloaded PDF Format
+  exportToPdf(data: any[], fileName: string): void {
+    const columns = Object.keys(data[0]);
+    const rows = data.map(item => columns.map(column => item[column]));
+
+    const doc = new jsPDF();
+    // @ts-ignore: Ignore TypeScript error for autoTable
+    doc.autoTable({
+      head: [columns],
+      body: rows
+    });
+    doc.save(`${fileName}.pdf`);
   }
 }

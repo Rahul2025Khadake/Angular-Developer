@@ -41,13 +41,21 @@
     <button class="btn btn-success"   (click)="exportDataToExcel()"><i class="fa fa-download" aria-hidden="true"></i></button>
   </div>
 </div>
+<div class="col-1">
+  <div style="margin-top: 20px;">
+    <button class="btn btn-warning"   (click)="exportDataToPDF()"><i class="fa fa-download" aria-hidden="true"></i></button>
+  </div>
+</div>
  
   
   
     <div class="row">
       <div class="col-sm-12">
+       
         <table class="border table-borderless mt-4">
-            <tr>
+        
+            <thead>
+              <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -56,8 +64,12 @@
                 <th>DOB</th>
                 <th>Developer</th>
                 <th>Action</th>
-            </tr>
-            <tr *ngFor="let user of data | filter:searchText; let i=index">
+              </tr>
+             
+            </thead>
+           
+            <tbody>
+              <tr *ngFor="let user of data | filter:searchText; let i=index">
                 <td>{{i+1}}</td>
                 <td>{{user.name}}</td>
                 <td>{{user.Email}}</td>
@@ -73,6 +85,8 @@
                     <button type="button" class="btn btn-success ms-3" (click)="ViweDataBasedOnDivTag()"><i class="fa-regular fa-eye"></i></button>
                 </td>
             </tr>
+            </tbody>
+           
         </table>
       </div>
     </div>
