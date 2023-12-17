@@ -9,5 +9,5 @@ import { FilterPipe } from './filter.pipe';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
-    provideHttpClient(), provideAnimations(), provideAnimations(),FilterPipe]
+    provideHttpClient(), provideAnimations(), provideAnimations(), FilterPipe, provideAnimations()]
 };

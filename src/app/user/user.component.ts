@@ -12,6 +12,7 @@ import { FilterPipe } from '../filter.pipe';
 import {MatInputModule} from '@angular/material/input';
 
 import {MatNativeDateModule} from '@angular/material/core';
+ import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -22,7 +23,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     ReactiveFormsModule,
     MatDialogModule,
     MatIconModule,
-    FilterPipe
+    FilterPipe,
 
   
   ],
@@ -192,6 +193,10 @@ Refreshdata()
   this.searchText="";
   this.Getapi_DAta();
 }
+// Downloaded xlsl Format
+exportDataToExcel(): void {
+  this.data_service.exportToExcel(this.data, 'table_data');
 }
 
+}
 
